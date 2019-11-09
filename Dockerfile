@@ -1,4 +1,7 @@
 FROM ruby:2.5
+RUN apt-get update -qq && apt-get install -y build-essential nodejs \
+    && rm -rf /var/lib/apt/lists/* \
+    && curl -o- -L https://yarnpkg.com/install.sh | bash
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
 RUN mkdir /myapp
 WORKDIR /myapp
