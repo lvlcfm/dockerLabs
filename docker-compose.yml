@@ -9,6 +9,7 @@ services:
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/myapp
+      - node_modules:/myapp/node_modules/
     ports:
       - "3000:3000"
     depends_on:
@@ -20,7 +21,10 @@ services:
     command: ./bin/webpack-dev-server
     volumes:
       - .:/webpacker-example-app
+      - node_modules:/myapp/node_modules/
     ports:
       - '3035:3035'
     depends_on:
     - web
+volumes:
+  node_modules:
