@@ -22,3 +22,5 @@ services:
       - .:/webpacker-example-app
     ports:
       - '3035:3035'
+    depends_on:
+    - web
